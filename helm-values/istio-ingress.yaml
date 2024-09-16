@@ -1,0 +1,10 @@
+---
+defaults:
+  service:
+    ports:
+      - port: 80
+        targetPort: 8080
+        nodePort: 32080
+        name: http2
+        protocol: TCP
+    type: LoadBalancer

@@ -1,0 +1,8 @@
+---
+meshConfig:
+  ingressService: istio-ingress
+  ingressSelector: istio-ingress
+
+pilot:
+  env:
+    K8S_INGRESS_NS: istio-ingress

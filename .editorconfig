@@ -1,0 +1,23 @@
+; Managed by Terraform -- DO NOT EDIT
+;
+; Editor support, either natively or via a plugin, is widely available:
+; - <https://editorconfig.org/#pre-installed>
+; - <https://editorconfig.org/#download>
+;
+; GitHub uses this configuration when displaying files and diffs.
+; Prettier uses some, but not all, of this configuration.
+
+root = true
+
+[*]
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[CODEOWNERS]
+indent_style = tab
+
+[Makefile]
+indent_style = tab

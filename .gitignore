@@ -1,0 +1,7 @@
+*.tfplan
+*.tfplan.*
+*.tfstate
+*.tfstate.*
+.DS_Store
+.envrc
+.terraform/
