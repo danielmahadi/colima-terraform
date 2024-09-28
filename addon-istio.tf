@@ -1,14 +1,3 @@
-resource "kubernetes_namespace_v1" "istio_system" {
-  metadata {
-    name = "istio-system"
-
-    labels = {
-      "istio-injection"                     = "disabled"
-      "pod-security.kubernetes.io/enforce"  = "privileged"
-    }
-  }
-}
-
 resource "helm_release" "istio_base" {
   chart       = "base"
   name        = "istio-base"
@@ -71,17 +60,6 @@ resource "helm_release" "ztunnel" {
   depends_on = [
     helm_release.istio_base,
   ]
-}
-
-resource "kubernetes_namespace_v1" "istio_ingress" {
-  metadata {
-    name = "istio-ingress"
-
-    labels = {
-      "istio-injection"                     = "enabled"
-      "pod-security.kubernetes.io/enforce"  = "privileged"
-    }
-  }
 }
 
 resource "helm_release" "istio_ingress" {
