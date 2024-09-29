@@ -1,0 +1,59 @@
+applicationSet:
+  livenessProbe:
+    enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      enabled: true
+  podLabels:
+    app: argocd-applicationset-controller
+  readinessProbe:
+    enabled: true
+
+configs:
+  cm:
+    create: true
+    users.anonymous.enabled: true
+    statusbadge.enabled: true
+  params:
+    server.insecure: true
+
+controller:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      enabled: true
+
+server:
+  extensions:
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1337 # because Istio
+      seccompProfile:
+        type: RuntimeDefault
+    enabled: true
+
+redis:
+  livenessProbe:
+    enabled: true
+  readinessProbe:
+    enabled: true
+
+repoServer:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      enabled: true
+  podLabels:
+    app: argocd-repo-server

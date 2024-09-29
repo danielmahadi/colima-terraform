@@ -1,3 +1,14 @@
+resource "kubernetes_namespace_v1" "argo_cd" {
+  metadata {
+    name = "argo-cd"
+
+    labels = {
+      "istio.io/dataplane-mode"             = "ambient"
+      "pod-security.kubernetes.io/enforce"  = "restricted"
+    }
+  }
+}
+
 resource "kubernetes_namespace_v1" "istio_ingress" {
   metadata {
     name = "istio-ingress"

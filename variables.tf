@@ -1,3 +1,11 @@
+variable "argo_cd_chart_url" {
+  type = string
+}
+
+variable "argo_cd_chart_version" {
+  type = string
+}
+
 variable "kiali_chart_url" {
   type = string
 }
